@@ -1,0 +1,37 @@
+---
+title: "authorise"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{authorise}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(datastewardr)
+```
+
+To get API access to DMPonline, you will need your API access token.
+
+Login to <https://dmponline.dcc.ac.uk> and go to Edit profile > API Access.
+
+Then use the function `set_env_var()` to open the *.Renviron* file and replace
+the placeholders with your email and access token.
+
+```
+DMPONLINE_EMAIL=<your.dmponline.email@example.com>
+DMPONLINE_TOKEN=<your.access.token>
+```
+
+These will be automatically accessed when using functions in the **datastewardr**
+package. When using API endpoints for v0, your access token will be used directly
+in the header of each request. For v1 requests, the token and email will be used
+to generate a bearer token, which will be cached for future requests until you
+leave your R session.

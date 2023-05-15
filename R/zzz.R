@@ -1,0 +1,41 @@
+
+dmponline_api <- function(instance = "tudelft"){
+  switch(
+    instance,
+    tudelft = "https://dmponline.tudelft.nl/api/",
+    dcc = "https://dmponline.tudelft.nl/api/"
+  )
+}
+
+dmp_api_endpoints <- function(endpoint = NULL, ver = "v1", ...){
+  # v1
+  if(is.null(endpoint)) stop("Need to define endpoint\n Available endpoints:\n v1: plans, hearbeat, authenticate, templates\n v0: plans, guidance, departments, templates, statistics")
+  if(ver == "v1"){
+    endpt <- switch(
+      endpoint,
+      plans = "plans",
+      heartbeat = "heartbeat",
+      authenticate = "authenticate",
+      templates = "templates"
+      )
+  } else if (ver == "v0"){
+    endpt <- switch(
+      endpoint,
+      plans = "plans",
+      guidance = "guidance",
+      departments = "departments",
+      templates = "templates",
+      statistics = "statistics"
+    )
+  }
+  base_url <- dmponline_api(instance = "tudelft")
+  req_url <- paste0(base_url, ver, "/", endpt)
+  return(req_url)
+}
+
+cache <- new.env(parent = emptyenv())
+
+cache_token <- function(auth_config){
+  # cache the bearer token
+  cache$auth_config <- auth_config
+}
