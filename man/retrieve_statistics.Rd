@@ -2,17 +2,23 @@
 % Please edit documentation in R/statistics.R
 \name{retrieve_statistics}
 \alias{retrieve_statistics}
-\title{Function to retrieve a DMPs based on the users in 3mE}
+\title{Function to retrieve statistics for DMPonline usage}
 \usage{
-retrieve_statistics(type = "plans", start_date = NULL, end_date = NULL)
+retrieve_statistics(type = "plans", start_date = NULL, end_date = NULL, ...)
 }
 \arguments{
 \item{type}{string with type of request. Can be \code{users_joined}, \code{using_template}, \code{plans_by_template}, or \code{plans}.}
 
-\item{start_date}{start date to retrieve stats in form YYYY-MM-DD.}
+\item{start_date}{start date as string from when to retrieve stats in form "YYYY-MM-DD".}
 
-\item{end_date}{end date to retrieve stats in form YYYY-MM-DD.}
+\item{end_date}{end date as string until when to retrieve stats in form "YYYY-MM-DD".}
+
+\item{...}{additional arguments to send to dmp_api_endpoints. Only supports \code{instance} argument (default: "tudelft").}
 }
 \description{
-Function to retrieve a DMPs based on the users in 3mE
+Function to retrieve statistics for DMPonline usage
+}
+\examples{
+# Retrieve statistics for plans created between 1st January 2023 and 31st January 2023 (inclusive)
+retrieve_statistics(type = "plans", start_date = "2023-01-01", end_data = "2023-01-31")
 }

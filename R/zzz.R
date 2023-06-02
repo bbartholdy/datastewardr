@@ -1,13 +1,13 @@
 
-dmponline_api <- function(instance = "tudelft"){
+dmponline_api <- function(instance){
   switch(
     instance,
     tudelft = "https://dmponline.tudelft.nl/api/",
-    dcc = "https://dmponline.tudelft.nl/api/"
+    dcc = "https://dmponline.dcc.ac.uk/api/"
   )
 }
 
-dmp_api_endpoints <- function(endpoint = NULL, ver = "v1", ...){
+dmp_api_endpoints <- function(endpoint = NULL, ver = "v1", instance = "tudelft"){
   # v1
   if(is.null(endpoint)) stop("Need to define endpoint\n Available endpoints:\n v1: plans, hearbeat, authenticate, templates\n v0: plans, guidance, departments, templates, statistics")
   if(ver == "v1"){
@@ -28,7 +28,7 @@ dmp_api_endpoints <- function(endpoint = NULL, ver = "v1", ...){
       statistics = "statistics"
     )
   }
-  base_url <- dmponline_api(instance = "tudelft")
+  base_url <- dmponline_api(instance)
   req_url <- paste0(base_url, ver, "/", endpt)
   return(req_url)
 }

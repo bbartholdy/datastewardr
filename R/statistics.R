@@ -1,12 +1,16 @@
-#' Function to retrieve a DMPs based on the users in 3mE
+#' Function to retrieve statistics for DMPonline usage
 #'
 #' @param type string with type of request. Can be `users_joined`, `using_template`, `plans_by_template`, or `plans`.
-#' @param start_date start date to retrieve stats in form YYYY-MM-DD.
-#' @param end_date end date to retrieve stats in form YYYY-MM-DD.
+#' @param start_date start date as string from when to retrieve stats in form "YYYY-MM-DD".
+#' @param end_date end date as string until when to retrieve stats in form "YYYY-MM-DD".
+#' @param ... additional arguments to send to dmp_api_endpoints. Only supports `instance` argument (default: "tudelft").
+#' @examples
+#' # Retrieve statistics for plans created between 1st January 2023 and 31st January 2023 (inclusive)
+#' retrieve_statistics(type = "plans", start_date = "2023-01-01", end_data = "2023-01-31")
 #' @importFrom httr content
 #' @export
-retrieve_statistics <- function(type = "plans", start_date = NULL, end_date = NULL){
-  endpoint <- dmp_api_endpoints("statistics", ver = "v0")
+retrieve_statistics <- function(type = "plans", start_date = NULL, end_date = NULL, ...){
+  endpoint <- dmp_api_endpoints("statistics", ver = "v0", ...)
   auth_config <- dmponline_auth(ver = "v0")
 
   endpt_ext <- match.arg(type, c(
