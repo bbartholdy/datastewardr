@@ -4,7 +4,12 @@
 \alias{retrieve_statistics}
 \title{Function to retrieve statistics for DMPonline usage}
 \usage{
-retrieve_statistics(type = "plans", start_date = NULL, end_date = NULL, ...)
+retrieve_statistics(
+  type = "plans",
+  start_date = NULL,
+  end_date = NULL,
+  instance = "tudelft"
+)
 }
 \arguments{
 \item{type}{string with type of request. Can be \code{users_joined}, \code{using_template}, \code{plans_by_template}, or \code{plans}.}
@@ -12,8 +17,6 @@ retrieve_statistics(type = "plans", start_date = NULL, end_date = NULL, ...)
 \item{start_date}{start date as string from when to retrieve stats in form "YYYY-MM-DD".}
 
 \item{end_date}{end date as string until when to retrieve stats in form "YYYY-MM-DD".}
-
-\item{...}{additional arguments to send to dmp_api_endpoints. Only supports \code{instance} argument (default: "tudelft").}
 }
 \description{
 Function to retrieve statistics for DMPonline usage

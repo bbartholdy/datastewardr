@@ -4,7 +4,7 @@
 \alias{retrieve_date}
 \title{Function to retrieve plans created on a certain date}
 \usage{
-retrieve_date(date = Sys.Date(), ...)
+retrieve_date(date = Sys.Date(), ..., instance = "tudelft")
 }
 \arguments{
 \item{date}{retrieve plans created on this date. defaults to today.}

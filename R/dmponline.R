@@ -21,13 +21,13 @@ retrieve_heartbeat <- function(){
 #' @param ... pass through arguments to `dmponline_auth()`
 #' @importFrom httr GET add_headers content
 #' @export
-retrieve_dmp <- function(dmp_number, full_plan = F, ...){
+retrieve_dmp <- function(dmp_number, full_plan = F, ..., instance = "tudelft"){
 
   if(full_plan == TRUE){
     ver <- "v0"
-    auth_config <- dmponline_auth(ver = ver)
+    auth_config <- dmponline_auth(ver = ver, ...)
     resp <- GET(
-      paste0(dmp_api_endpoints("plans", ver = ver), "?plan=", dmp_number),
+      paste0(dmp_api_endpoints("plans", ver = ver, instance), "?plan=", dmp_number),
       add_headers(
         'Content-Type' = auth_config$headers[[1]],
         'Authorization' = auth_config$headers[[2]]
@@ -41,7 +41,7 @@ retrieve_dmp <- function(dmp_number, full_plan = F, ...){
     }
     auth_token <- cache$auth_config
 
-    plan_url <- paste0(dmp_api_endpoints("plans"), "/", dmp_number)
+    plan_url <- paste0(dmp_api_endpoints("plans", instance), "/", dmp_number)
     #print(plan_url)
     request <- GET(
       plan_url,
@@ -66,7 +66,7 @@ retrieve_dmp <- function(dmp_number, full_plan = F, ...){
 #' @inheritParams retrieve_dmp
 #' @importFrom httr GET add_headers content
 #' @export
-retrieve_date <- function(date = Sys.Date(), ...){
+retrieve_date <- function(date = Sys.Date(), ..., instance = "tudelft"){
   if(is.null(cache$auth_config)){
     dmponline_auth(...)
   }
@@ -75,7 +75,7 @@ retrieve_date <- function(date = Sys.Date(), ...){
   token <- retrieve_token()
   #date <- Sys.Date()
   # if multiple dates: created_after=X&created_before=Y
-  req_url <- paste0(dmp_api_endpoints("plans", ...), "?created_after=", date)
+  req_url <- paste0(dmp_api_endpoints("plans", instance), "?created_after=", date)
   print(req_url)
   request <- GET(
     req_url,

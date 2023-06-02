@@ -7,7 +7,7 @@
 https://github.com/DMPRoadmap/roadmap/wiki/API-documentation
 }
 \usage{
-retrieve_dmp(dmp_number, full_plan = F, ...)
+retrieve_dmp(dmp_number, full_plan = F, ..., instance = "tudelft")
 }
 \arguments{
 \item{dmp_number}{number of the plan (i.e. https://dmponline.dcc.ac.uk/plans/<plan_number>)}
