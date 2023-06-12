@@ -27,7 +27,7 @@ retrieve_dmp <- function(dmp_number, full_plan = F, ..., instance = "tudelft"){
     ver <- "v0"
     auth_config <- dmponline_auth(ver = ver, ...)
     resp <- GET(
-      paste0(dmp_api_endpoints("plans", ver = ver, instance), "?plan=", dmp_number),
+      paste0(dmp_api_endpoints("plans", ver, instance), "?plan=", dmp_number),
       add_headers(
         'Content-Type' = auth_config$headers[[1]],
         'Authorization' = auth_config$headers[[2]]
@@ -40,8 +40,8 @@ retrieve_dmp <- function(dmp_number, full_plan = F, ..., instance = "tudelft"){
       dmponline_auth(...)
     }
     auth_token <- cache$auth_config
-
-    plan_url <- paste0(dmp_api_endpoints("plans", instance), "/", dmp_number)
+    ver = "v1"
+    plan_url <- paste0(dmp_api_endpoints("plans", ver, instance), "/", dmp_number)
     #print(plan_url)
     request <- GET(
       plan_url,
