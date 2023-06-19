@@ -53,6 +53,7 @@ retrieve_dmp <- function(dmp_number, full_plan = F, ..., instance = "tudelft"){
     #print(request)
     resp_content <- content(request)$items
     output <- list("response" = request, "content" = resp_content)
+    output$response$request[[3]][2] <- "Bearer token redacted"
     request
     return(invisible(output))
 
@@ -60,23 +61,18 @@ retrieve_dmp <- function(dmp_number, full_plan = F, ..., instance = "tudelft"){
   }
 }
 
-#' Function to retrieve plans created on a certain date
+#' Function to retrieve plans created from a certain date
 #'
-#' @param date retrieve plans created on this date. defaults to today.
+#' @param date retrieve plans created from this date. defaults to today.
 #' @inheritParams retrieve_dmp
 #' @importFrom httr GET add_headers content
 #' @export
 retrieve_date <- function(date = Sys.Date(), ..., instance = "tudelft"){
-  if(is.null(cache$auth_config)){
-    dmponline_auth(...)
-  }
-  auth_token <- cache$auth_config
-  access_token <- cache$access_token
+
+  ver <- "v0"
   token <- retrieve_token()
-  #date <- Sys.Date()
   # if multiple dates: created_after=X&created_before=Y
-  req_url <- paste0(dmp_api_endpoints("plans", instance), "?created_after=", date)
-  print(req_url)
+  req_url <- paste0(dmp_api_endpoints("plans", ver, instance), "?created_after=", date)
   request <- GET(
     req_url,
     add_headers(

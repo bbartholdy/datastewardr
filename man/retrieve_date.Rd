@@ -2,15 +2,15 @@
 % Please edit documentation in R/dmponline.R
 \name{retrieve_date}
 \alias{retrieve_date}
-\title{Function to retrieve plans created on a certain date}
+\title{Function to retrieve plans created from a certain date}
 \usage{
 retrieve_date(date = Sys.Date(), ..., instance = "tudelft")
 }
 \arguments{
-\item{date}{retrieve plans created on this date. defaults to today.}
+\item{date}{retrieve plans created from this date. defaults to today.}
 
 \item{...}{pass through arguments to \code{dmponline_auth()}}
 }
 \description{
-Function to retrieve plans created on a certain date
+Function to retrieve plans created from a certain date
 }
