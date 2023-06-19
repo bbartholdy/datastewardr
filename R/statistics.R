@@ -9,7 +9,7 @@
 #' retrieve_statistics(type = "plans", start_date = "2023-01-01", end_data = "2023-01-31")
 #' @importFrom httr content
 #' @export
-retrieve_statistics <- function(type = "plans", start_date = NULL, end_date = NULL, instance = "tudelft"){
+retrieve_statistics <- function(type = "plans", start_date = NULL, end_date = NULL, instance = "tudelft", ...){
   endpoint <- dmp_api_endpoints("statistics", ver = "v0", instance)
   auth_config <- dmponline_auth(ver = "v0", ...)
 
@@ -35,5 +35,10 @@ retrieve_statistics <- function(type = "plans", start_date = NULL, end_date = NU
       auth_config$headers
     )
   )
-  return(resp)
+  resp$request[[3]][3] <- "Token redacted"
+  resp_content <- content(resp)
+  output <- list("response" = resp, "content" = resp_content)
+  print(resp)
+  return(invisible(output))
+
 }

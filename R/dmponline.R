@@ -33,6 +33,7 @@ retrieve_dmp <- function(dmp_number, full_plan = F, ..., instance = "tudelft"){
         'Authorization' = auth_config$headers[[2]]
       )
     )
+    resp$request[[3]][3] <- "Token redacted"
     return(resp)
 
   } else {
@@ -67,7 +68,7 @@ retrieve_dmp <- function(dmp_number, full_plan = F, ..., instance = "tudelft"){
 #' @inheritParams retrieve_dmp
 #' @importFrom httr GET add_headers content
 #' @export
-retrieve_date <- function(date = Sys.Date(), ..., instance = "tudelft"){
+retrieve_date <- function(date = Sys.Date(), ..., instance = "tudelft", verbose = T){
 
   ver <- "v0"
   token <- retrieve_token()
@@ -80,6 +81,7 @@ retrieve_date <- function(date = Sys.Date(), ..., instance = "tudelft"){
       'Authorization' = paste("Token", token)
     )
   )
+  if(verbose == T)  print(request)
   content(request)
 }
 
