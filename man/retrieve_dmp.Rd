@@ -15,6 +15,8 @@ retrieve_dmp(dmp_number, full_plan = F, ..., instance = "tudelft")
 \item{full_plan}{logical. Whether or not to download the full plan (only available in API v0).}
 
 \item{...}{pass through arguments to \code{dmponline_auth()}}
+
+\item{instance}{string. Whether you are using the default DMPonline (dmponline.dcc.ac.uk) or your own organisation has an instance.}
 }
 \description{
 Function to retrieve a DMP based on the plan number

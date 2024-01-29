@@ -18,6 +18,7 @@ retrieve_heartbeat <- function(){
 #' @source https://github.com/DMPRoadmap/roadmap/wiki/API-documentation
 #' @param dmp_number number of the plan (i.e. https://dmponline.dcc.ac.uk/plans/<plan_number>)
 #' @param full_plan logical. Whether or not to download the full plan (only available in API v0).
+#' @param instance string. Whether you are using the default DMPonline (dmponline.dcc.ac.uk) or your own organisation has an instance.
 #' @param ... pass through arguments to `dmponline_auth()`
 #' @importFrom httr GET add_headers content
 #' @export
@@ -65,6 +66,7 @@ retrieve_dmp <- function(dmp_number, full_plan = F, ..., instance = "tudelft"){
 #' Function to retrieve plans created from a certain date
 #'
 #' @param date retrieve plans created from this date. defaults to today.
+#' @param verbose logical. Whether or not to print the API request (default = `TRUE`).
 #' @inheritParams retrieve_dmp
 #' @importFrom httr GET add_headers content
 #' @export

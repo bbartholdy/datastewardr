@@ -6,7 +6,7 @@
 #' @inheritParams retrieve_dmp
 #' @examples
 #' # Retrieve statistics for plans created between 1st January 2023 and 31st January 2023 (inclusive)
-#' retrieve_statistics(type = "plans", start_date = "2023-01-01", end_data = "2023-01-31")
+#' retrieve_statistics(type = "plans", start_date = "2023-01-01", end_date = "2023-01-31")
 #' @importFrom httr content
 #' @export
 retrieve_statistics <- function(type = "plans", start_date = NULL, end_date = NULL, instance = "tudelft", ...){

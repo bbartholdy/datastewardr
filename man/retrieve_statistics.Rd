@@ -19,6 +19,8 @@ retrieve_statistics(
 
 \item{end_date}{end date as string until when to retrieve stats in form "YYYY-MM-DD".}
 
+\item{instance}{string. Whether you are using the default DMPonline (dmponline.dcc.ac.uk) or your own organisation has an instance.}
+
 \item{...}{pass through arguments to \code{dmponline_auth()}}
 }
 \description{
@@ -26,5 +28,5 @@ Function to retrieve statistics for DMPonline usage
 }
 \examples{
 # Retrieve statistics for plans created between 1st January 2023 and 31st January 2023 (inclusive)
-retrieve_statistics(type = "plans", start_date = "2023-01-01", end_data = "2023-01-31")
+retrieve_statistics(type = "plans", start_date = "2023-01-01", end_date = "2023-01-31")
 }

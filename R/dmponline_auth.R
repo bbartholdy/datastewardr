@@ -1,5 +1,3 @@
-# Better way to store credentials: https://github.com/r-lib/keyring
-
 #' Store and retrieve DMPonline email and API token from environment
 #'
 #' @details You can find your DMPonline access token under Edit Profile > API Access
@@ -34,18 +32,18 @@ retrieve_email <- function(){
 
 #' @seealso [usethis::edit_r_environ()]
 #' @inheritParams usethis::edit_r_environ
-#' @import usethis
 #' @rdname auth
 set_env_var <- function (scope = c("user", "project"))
 {
   path <- usethis:::scoped_path_r(scope, ".Renviron", envvar = "R_ENVIRON_USER")
   line <- "DMPONLINE_EMAIL=example@email.com\nDMPONLINE_TOKEN=randomlettersandnumbers"
-  write(line,
-        file=path,
-        append=TRUE
+  write(
+    line,
+    file=path,
+    append=TRUE
   )
-  usethis:::edit_file(path)
-  usethis:::ui_todo("Replace the placeholder email and token and restart R for changes to take effect")
+  usethis::edit_file(path)
+  usethis::ui_todo("Replace the placeholder email and token and restart R for changes to take effect")
   invisible(path)
 }
 

@@ -10,6 +10,10 @@ retrieve_date(date = Sys.Date(), ..., instance = "tudelft", verbose = T)
 \item{date}{retrieve plans created from this date. defaults to today.}
 
 \item{...}{pass through arguments to \code{dmponline_auth()}}
+
+\item{instance}{string. Whether you are using the default DMPonline (dmponline.dcc.ac.uk) or your own organisation has an instance.}
+
+\item{verbose}{logical. Whether or not to print the API request (default = \code{TRUE}).}
 }
 \description{
 Function to retrieve plans created from a certain date
