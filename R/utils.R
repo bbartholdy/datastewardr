@@ -17,7 +17,7 @@ dmp_api_endpoints <- function(endpoint = NULL, ver = "v1", instance = "tudelft")
       heartbeat = "heartbeat",
       authenticate = "authenticate",
       templates = "templates"
-      )
+    )
   } else if (ver == "v0"){
     endpt <- switch(
       endpoint,

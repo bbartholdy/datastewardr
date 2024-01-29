@@ -8,7 +8,8 @@ retrieve_statistics(
   type = "plans",
   start_date = NULL,
   end_date = NULL,
-  instance = "tudelft"
+  instance = "tudelft",
+  ...
 )
 }
 \arguments{
@@ -17,6 +18,8 @@ retrieve_statistics(
 \item{start_date}{start date as string from when to retrieve stats in form "YYYY-MM-DD".}
 
 \item{end_date}{end date as string until when to retrieve stats in form "YYYY-MM-DD".}
+
+\item{...}{pass through arguments to \code{dmponline_auth()}}
 }
 \description{
 Function to retrieve statistics for DMPonline usage
