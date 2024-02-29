@@ -1,0 +1,24 @@
+{
+  "template_id": {
+    "1506827492": {
+      "organisation_id": "1071570889",
+      "organisation_name": "Delft University of Technology",
+      "title": "Data Management Plan NWO (September 2020)",
+      "identifier": 1506827492,
+      "ethics": {
+        "section": 5,
+        "number": 1
+      }
+    },
+    "975303870": {
+      "organisation_id": "1071570889",
+      "organisation_name": "Delft University of Technology",
+      "title": "TU Delft Data Management Plan template (2021) ",
+      "identifier": 975303870,
+      "ethics": {
+        "section": 5,
+        "number": [1, 2]
+      }
+    }
+  }
+}

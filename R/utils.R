@@ -39,3 +39,21 @@ cache_token <- function(auth_config){
   # cache the bearer token
   cache$auth_config <- auth_config
 }
+
+# extract response to ethics question
+check_ethics <- function(dmp){
+  ethics_json <- jsonlite::read_json("inst/extdata/ethics_questions.json")
+  template_id <- as.character(dmp[[1]]$template$id)
+  template <- ethics_json$template_id[[template_id]]
+  section <- template$ethics$section
+  number <- unlist(template$ethics$number)
+  q <- dmp[[1]]$plan_content[[1]]$sections[[section]]$questions[number]
+  return(q)
+}
+
+# check if template is recommended by HREC
+is_recommended <- function(org_id){
+  templates_json <- jsonlite::read_json("inst/extdata/ethics_templates.json")
+  out <- templates_json$org_id[org_id]
+  return(unlist(out, use.names = F))
+}
