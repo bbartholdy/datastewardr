@@ -42,7 +42,8 @@ cache_token <- function(auth_config){
 
 # extract response to ethics question
 check_ethics <- function(dmp){
-  ethics_json <- jsonlite::read_json("inst/extdata/ethics_questions.json")
+  #ethics_json <- jsonlite::read_json("inst/extdata/ethics_questions.json")
+  ethics_json <- jsonlite::read_json(json_file_path("ethics_questions.json"))
   template_id <- as.character(dmp[[1]]$template$id)
   template <- ethics_json$template_id[[template_id]]
   section <- template$ethics$section
@@ -53,7 +54,16 @@ check_ethics <- function(dmp){
 
 # check if template is recommended by HREC
 is_recommended <- function(org_id){
-  templates_json <- jsonlite::read_json("inst/extdata/ethics_templates.json")
+  #templates_json <- jsonlite::read_json("inst/extdata/ethics_templates.json")
+  templates_json <- jsonlite::read_json(json_file_path("ethics_templates.json"))
   out <- templates_json$org_id[org_id]
   return(unlist(out, use.names = F))
+}
+
+json_file_path <- function(path = NULL) {
+  if (is.null(path)) {
+    dir(system.file("extdata", package = "datastewardr"))
+  } else {
+    system.file("extdata", path, package = "datastewardr", mustWork = TRUE)
+  }
 }
