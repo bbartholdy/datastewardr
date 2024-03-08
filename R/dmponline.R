@@ -1,8 +1,36 @@
+dmponline <- function(instance, endpoint, ver, ...){
+  req_url <- dmp_api_endpoints(endpoint = endpoint, instance = instance, ver = ver)
+
+
+  if(ver == "v0"){
+    auth <- dmponline_auth(ver = ver)
+    resp <- GET(
+      paste0(req_url, path = NULL),
+      add_headers(
+        'Content-Type' = auth$headers[[1]],
+        'Authorization' = auth$headers[[2]]
+      )
+    )
+  } else {
+    auth <- dmponline_auth(ver = ver)
+    resp <- GET(
+      req_url,
+      add_headers(
+        Accept = "application/json",
+        'Authorization' = auth
+      )
+    )
+  }
+
+  return(resp)
+}
+
 #' Function to ping the DMPonline API.
 #'
 #' Basic function to ping the DMPonline API. No authentication required.
 #' If the call returns Status: 200, then the API was successfully reached.
 #' @importFrom httr GET
+#' @export
 
 retrieve_heartbeat <- function(){
   req_url <- dmp_api_endpoints("heartbeat")
