@@ -19,6 +19,15 @@
         "section": 5,
         "number": [1, 2]
       }
-    }
+    },
+    "1188198415": {
+      "organisation_id": "1071570889",
+      "organisation_name": "Delft University of Technology",
+      "title": "Horizon Europe Template",
+      "identifier": 1188198415,
+      "ethics": {
+        "section": 6,
+        "number": 1
+      }
   }
 }
