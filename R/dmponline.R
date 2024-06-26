@@ -67,7 +67,7 @@ retrieve_dmp <- function(dmp_number, full_plan = F, ..., instance = "tudelft"){
 
   } else {
     if(is.null(cache$auth_config)){
-      dmponline_auth(...)
+      dmponline_auth(..., instance = instance)
     }
     auth_token <- cache$auth_config
     ver = "v1"
