@@ -32,8 +32,8 @@ dmponline <- function(instance, endpoint, ver, ...){
 #' @importFrom httr GET
 #' @export
 
-retrieve_heartbeat <- function(){
-  req_url <- dmp_api_endpoints("heartbeat")
+retrieve_heartbeat <- function(instance = "tudelft"){
+  req_url <- dmp_api_endpoints("heartbeat", instance = instance)
   GET(req_url)
 }
 
