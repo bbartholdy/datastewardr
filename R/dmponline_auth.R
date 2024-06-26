@@ -55,9 +55,9 @@ set_env_var <- function (scope = c("user", "project"))
 #' @rdname auth
 #' @importFrom httr POST
 #' @importFrom jsonlite toJSON
-dmponline_auth <- function(email = retrieve_email(), token = retrieve_token(), ver = "v1"){
+dmponline_auth <- function(email = retrieve_email(), token = retrieve_token(), ver = "v1", instance = "tudelft"){
   if(ver == "v1"){
-    endpoint <- dmp_api_endpoints("authenticate", ver = "v1")
+    endpoint <- dmp_api_endpoints("authenticate", ver = "v1", instance = instance)
     v1_headers <- list(
       'Content-Type' = "application/x-www-form-urlencoded;charset=UTF-8",
       Accept = "application/json",

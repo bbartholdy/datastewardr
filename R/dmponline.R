@@ -54,7 +54,7 @@ retrieve_dmp <- function(dmp_number, full_plan = F, ..., instance = "tudelft"){
 
   if(full_plan == TRUE){
     ver <- "v0"
-    auth_config <- dmponline_auth(ver = ver, ...)
+    auth_config <- dmponline_auth(ver = ver, ..., instance = instance)
     resp <- GET(
       paste0(dmp_api_endpoints("plans", ver, instance), "?plan=", dmp_number),
       add_headers(
