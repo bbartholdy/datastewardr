@@ -20,6 +20,16 @@
         "number": [1, 2]
       }
     },
+    "349200444": {
+      "organisation_id": "1071570889",
+      "organisation_name": "Delft University of Technology",
+      "title": "TU Delft Data Management Plan template (2025)",
+      "identifier": 349200444,
+      "ethics": {
+        "section": 5,
+        "number": 1
+      }
+    },
     "1188198415": {
       "organisation_id": "1071570889",
       "organisation_name": "Delft University of Technology",
